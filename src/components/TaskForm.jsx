@@ -21,7 +21,7 @@ const TaskForm = ({ refresh }) => {
       status: 'pending'
     };
   
-    await axios.post('http://localhost:5000/api/tasks', newTask);
+    await axios.post('https://taskmanger-backend-9oza.onrender.com/api/tasks', newTask);
     toast.success('Task added successfully!');
 
     setTitle('');

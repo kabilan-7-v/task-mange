@@ -15,14 +15,14 @@ const TaskList = ({ refreshFlag, refresh }) => {
 
   // Fetch tasks from API on component mount or when refreshFlag changes
   useEffect(() => {
-    axios.get('http://localhost:5000/api/tasks').then(res => setTasks(res.data));
+    axios.get('https://taskmanger-backend-9oza.onrender.com/api/tasks').then(res => setTasks(res.data));
   }, [refreshFlag]);
 
   // Mark task as complete
   const markComplete = async (id) => {
     try {
       console.log('Sending request to mark task complete:', id);
-      await axios.put(`http://localhost:5000/api/tasks/${id}`, { status: 'complete' });
+      await axios.put(`https://taskmanger-backend-9oza.onrender.com/api/tasks/${id}`, { status: 'complete' });
       setTasks(prevTasks =>
         prevTasks.map(task =>
           task._id === id ? { ...task, status: 'complete' } : task
@@ -37,7 +37,7 @@ const TaskList = ({ refreshFlag, refresh }) => {
   // Delete task
   const deleteTask = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/tasks/${id}`);
+      await axios.delete(`https://taskmanger-backend-9oza.onrender.com/api/tasks/${id}`);
       setTasks(prevTasks => prevTasks.filter(task => task._id !== id));
       refresh();
     } catch (err) {
